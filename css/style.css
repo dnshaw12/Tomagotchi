@@ -32,7 +32,7 @@ footer {
 	width: 100%;
 }
 
-#timer {
+header > div {
 	font-size: 30px;
 	float: left;
 }
@@ -40,6 +40,7 @@ footer {
 #name {
 	font-size: 30px;
 	text-align: right;
+	float: right;
 }
 
 #screen {
