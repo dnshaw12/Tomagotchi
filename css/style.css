@@ -1,0 +1,94 @@
+body {
+	background-color: pink;
+	display: flex;
+	flex-direction: column;
+	/*align-items: flex-start;*/
+	height: 100vh;
+	margin: 0;
+}
+
+
+
+header {
+	background-color: white;
+	padding: 5px;
+}
+
+main {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	flex-grow: 1;
+	background-color: blue;
+	position: relative;
+}
+
+
+
+footer {
+	display: flex;
+	background-color: black;
+	width: 100%;
+}
+
+#timer {
+	background-color: green;
+	font-size: 30px;
+	float: left;
+}
+
+#name {
+	background-color: grey;
+	font-size: 30px;
+	text-align: right;
+}
+
+#screen {
+	height: 90%;
+	width: 90%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+#screen1 {
+	background-color: green;
+	width: 33.333333%;
+}
+
+#screen2 {
+	background-color: purple;
+	width: 33.333333%;
+}
+
+#screen3 {
+	background-color: white;
+	width: 33.333333%;
+}
+
+#screen4 {
+	background-color: purple;
+	width: 33.333333%;
+}
+
+#screen5 {
+	background-color: white;
+	width: 33.333333%;
+}
+
+#screen6 {
+	background-color: green;
+	width: 33.333333%;
+}
+
+#stats {
+	background-color: red;
+	align-self: flex-end;
+	width: 95%;
+	margin: 2%;
+	padding: 1%;
+	text-align: center;
+	font-size: 30px;
+}
+
