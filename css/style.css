@@ -51,44 +51,26 @@ footer {
 	border-radius: 35px;
 }
 
-#screen1 {
-	background-color: green;
+ #screen1, #screen2, #screen3, #screen4, #screen5, #screen6 {
 	width: 33.333333%;
-	border-radius: 35px 0 0 0;
 	height: 50%;
+	background-color: white;
 }
 
-#screen2 {
-	background-color: purple;
-	width: 33.333333%;
-	height: 50%;
+#screen1 {
+	border-radius: 35px 0 0 0;
 }
 
 #screen3 {
-	background-color: white;
-	width: 33.333333%;
 	border-radius: 0 35px 0 0;
-	height: 50%;
 }
 
 #screen4 {
-	background-color: purple;
-	width: 33.333333%;
 	border-radius: 0 0 0 35px;
-	height: 50%;
-}
-
-#screen5 {
-	background-color: white;
-	width: 33.333333%;
-	height: 50%;
 }
 
 #screen6 {
-	background-color: green;
-	width: 33.333333%;
 	border-radius: 0 0 35px 0;
-	height: 50%;
 }
 
 #buttons {
