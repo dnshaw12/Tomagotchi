@@ -10,7 +10,6 @@ body {
 
 
 header {
-	background-color: white;
 	padding: 5px;
 }
 
@@ -22,24 +21,23 @@ main {
 	flex-grow: 1;
 	background-color: blue;
 	position: relative;
+	border-radius: 35px;
+	margin: 10px;
 }
 
 
 
 footer {
 	display: flex;
-	background-color: black;
 	width: 100%;
 }
 
 #timer {
-	background-color: green;
 	font-size: 30px;
 	float: left;
 }
 
 #name {
-	background-color: grey;
 	font-size: 30px;
 	text-align: right;
 }
@@ -50,45 +48,76 @@ footer {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
+	border-radius: 35px;
 }
 
 #screen1 {
 	background-color: green;
 	width: 33.333333%;
+	border-radius: 35px 0 0 0;
+	height: 50%;
 }
 
 #screen2 {
 	background-color: purple;
 	width: 33.333333%;
+	height: 50%;
 }
 
 #screen3 {
 	background-color: white;
 	width: 33.333333%;
+	border-radius: 0 35px 0 0;
+	height: 50%;
 }
 
 #screen4 {
 	background-color: purple;
 	width: 33.333333%;
+	border-radius: 0 0 0 35px;
+	height: 50%;
 }
 
 #screen5 {
 	background-color: white;
 	width: 33.333333%;
+	height: 50%;
 }
 
 #screen6 {
 	background-color: green;
 	width: 33.333333%;
+	border-radius: 0 0 35px 0;
+	height: 50%;
+}
+
+#buttons {
+	display: flex;
+	width: 100vw;
+	justify-content: space-around;
+}
+
+#buttons > div > button {
+	height: 30px;
+	width: 120px;
+	font-size: 13px;
+	border-radius: 15px;
 }
 
 #stats {
-	background-color: red;
 	align-self: flex-end;
-	width: 95%;
-	margin: 2%;
+	width: 100%;
 	padding: 1%;
 	text-align: center;
 	font-size: 30px;
 }
 
+img:hover {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
+img {
+	height: 75%;
+	width: 75%;
+}
