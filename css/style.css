@@ -81,7 +81,7 @@ input {
 	flex-direction: row;
 	width: 100%;
 	height: 45%;
-	/*background-image: url("images/kitten1.gif")*/
+	animation: 6s run infinite;
 }
 
  #screen1, #screen2, #screen3, #screen4, #screen5, #screen6 {
@@ -134,5 +134,18 @@ img:hover {
 
 img {
 	height: 75%;
+	animation: 6s turn infinite step-end;
+}
 
+@keyframes run {
+	0%   {margin-left:10%;}
+  	25%  {margin-left:40%;}
+  	50%  {margin-left:70%;}
+  	75%  {margin-left:40%;}
+  	100% {margin-left:10%;}
+}
+
+@keyframes turn {
+	0%	{-webkit-transform: scaleX(1);transform: scaleX(1);}
+	50% {-webkit-transform: scaleX(-1);transform: scaleX(-1);}
 }

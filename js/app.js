@@ -19,7 +19,7 @@ const game = {
 		game.timer = setInterval(function(){
 		game.increaseTimer();
 
-		// game.dies();
+		game.dies();
 		game.beAsleep();
 
 		//stat increases
@@ -28,7 +28,7 @@ const game = {
 		game.increaseSleepiness();
 		game.isSleepy();
 		game.increaseBoredom();
-		game.isBored();
+		game.isBored(``);
 
 		game.evolve();
 
@@ -219,23 +219,22 @@ const game = {
 
 	evolve(){
 		if (this.tamagotchi.isAsleep === false) {
-			if (this.time === 9) {
+			if (this.time === 59) {
 				$('#catImage').attr('src','images/poof.gif')
 			}
-			if (this.time === 10) {
+			if (this.time === 60) {
 				$('#catImage').attr('src','images/kitten-2.gif')
 				this.tamagotchi.surName = 'Cat '
 				$('#name').text(this.tamagotchi.surName+this.tamagotchi.name)
 			}
-			if (this.time === 19) {
+			if (this.time === 119) {
 				$('#catImage').attr('src','images/poof.gif')
 			}
-			if (this.time === 20) {
+			if (this.time === 120) {
 				console.log('second evolution');
 				$('#catImage').attr('src','images/kitten-3.gif')
 				this.tamagotchi.surName = 'Grande Matriarche '
 				$('#name').text(this.tamagotchi.surName+this.tamagotchi.name)
-				$('#bottomScreen').css('justify-content', 'space-evenly')
 			}
 		}
 	}
