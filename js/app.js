@@ -60,7 +60,11 @@ const game = {
 			$('#screen1').css('background-image','');
 			$('#screen2').css('background-image','');
 			$('#screen3').css('background-image','');
-			$('#catImage').attr('src','images/headstone.png')
+			$('#catImage').attr('src','images/ghostcat.gif')
+
+			$('#screen1').append($('<img src="images/headstone.png">'))
+			$('#screen3').append($('<img src="images/headstone.png">'))
+
 			$('#screen2').text(`${this.tamagotchi.surName}${this.tamagotchi.name} died! You're a terrible owner....`)
 			clearInterval(this.timer)
 		}
