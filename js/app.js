@@ -23,6 +23,7 @@ const game = {
 		game.increaseHunger();
 		game.isHungry();
 		game.increaseSleepiness();
+		game.isSleepy();
 		game.increaseBoredom();
 
 		game.beAsleep();
@@ -92,7 +93,7 @@ const game = {
 	// increase hunger // keep in mind sleep state
 	increaseHunger(){
 		if (this.tamagotchi.isAsleep === false) {
-			if (this.time % 2 === 0) {
+			if (this.time % 12 === 0) {
 				this.tamagotchi.hunger++;
 			}
 		} else {
@@ -105,7 +106,7 @@ const game = {
 	// increase sleepiness 
 	increaseSleepiness(){
 		if (this.tamagotchi.isAsleep === false) {
-			if (this.time % 15 === 0) {
+			if (this.time % 2 === 0) {
 				this.tamagotchi.sleepiness++;
 			}
 		}
@@ -138,9 +139,23 @@ const game = {
 		} else {
 			$('#screen1').css('background-image',"")
 		}
-	}
+	},
 
 	// is sleepy
+
+	isSleepy(){
+		if (this.tamagotchi.sleepiness > 6 && this.tamagotchi.isAsleep === false) {
+			if (this.time % 2 === 0) {
+				this.tamagotchi.angryMeow.play();
+				$('#screen2').css('background-image',"")
+			} else {
+				$('#screen2').css('background-image',"url('images/sleeping-zzz.gif')")
+			};
+		} else {
+			$('#screen2').css('background-image',"")
+		}
+	}
+
 	// is bored
 	// evolve
 	// feed
