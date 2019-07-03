@@ -10,31 +10,35 @@ const game = {
 	sleepTime: 0,
 	startGame(){
 
-		game.gameStarted = true;
-		game.tamagotchi = new Tamagotchi();
-		$('#name').text(game.tamagotchi.surName+game.tamagotchi.name)
+		this.gameStarted = true;
+		this.tamagotchi = new Tamagotchi();
+		$('#name').text(this.tamagotchi.surName+this.tamagotchi.name)
 		$('#screen').css('background-image',"url('images/field.jpg')")
 		$('#startScreen').remove();
 		$('#screen').css('animation','2s zoom');
 
-		game.timer = setInterval(function(){
+		this.timer = setInterval(function(){
 
-		game.increaseTimer();
-		game.beAsleep();
+			game.increaseTimer();
+			game.beAsleep();
 
-		//stat increases
-		game.increaseHunger();
-		game.isHungry();
-		game.increaseSleepiness();
-		game.isSleepy();
-		game.increaseBoredom();
-		game.isBored(``);
+			if (game.time % 6 === 0) {
+				game.tamagotchi.growUp();
+			}
 
-		game.evolve();
+			//stat increases
+			game.increaseHunger();
+			game.isHungry();
+			game.increaseSleepiness();
+			game.isSleepy();
+			game.increaseBoredom();
+			game.isBored(``);
 
-		game.updateVisStats()
+			game.evolve();
 
-		game.dies();
+			game.updateVisStats()
+
+			game.dies();
 
 		}, 1000);
 	},
@@ -48,6 +52,7 @@ const game = {
 			$('#sleepiness').text(game.tamagotchi.sleepiness)
 			$('#hunger').text(game.tamagotchi.hunger)
 			$('#boredom').text(game.tamagotchi.boredom)
+			$('#age').text(game.tamagotchi.age)
 		}
 	},
 
@@ -117,11 +122,11 @@ const game = {
 	// increase hunger // keep in mind sleep state
 	increaseHunger(){
 		if (this.tamagotchi.isAsleep === false) {
-			if (this.time % 12 === 0) {
+			if (this.time % 10 === 0) {
 				this.tamagotchi.hunger++;
 			}
 		} else {
-			if (this.time % 24 === 0) {
+			if (this.time % 20 === 0) {
 				this.tamagotchi.hunger++;
 			}
 		}
@@ -130,7 +135,7 @@ const game = {
 	// increase sleepiness 
 	increaseSleepiness(){
 		if (this.tamagotchi.isAsleep === false) {
-			if (this.time % 15 === 0) {
+			if (this.time % 12 === 0) {
 				this.tamagotchi.sleepiness++;
 			}
 		}
@@ -140,11 +145,11 @@ const game = {
 
 	increaseBoredom(){
 		if (this.tamagotchi.isAsleep === false) {
-			if (this.time % 18 === 0) {
+			if (this.time % 15 === 0) {
 				this.tamagotchi.boredom++;
 			}
 		} else {
-			if (this.time % 10 === 0) {
+			if (this.time % 7 === 0) {
 				this.tamagotchi.boredom++;
 			}
 		}
@@ -257,7 +262,11 @@ const game = {
 	}
 }
 
-$('#startButton').on('click', game.startGame);
+//$('#startButton').on('click', game.startGame);
+$('#startButton').on('click', (e) => {
+	///e
+	game.startGame()
+});
 $('#lightButton').on('click', game.toggleLight);
 $('#feedButton').on('click', game.feedPet);
 $('#playButton').on('click', game.play);

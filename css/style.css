@@ -10,6 +10,9 @@ body {
 
 header {
 	padding: 5px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
 }
 
 main {
@@ -38,7 +41,6 @@ header > div {
 #name {
 	font-size: 30px;
 	text-align: right;
-	float: right;
 }
 
 #startScreen {
