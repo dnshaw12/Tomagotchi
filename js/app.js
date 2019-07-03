@@ -17,10 +17,11 @@ const game = {
 
 		game.timer = setInterval(function(){
 		game.increaseTimer();
-		//stat increases
 
 		// game.dies();
 		game.beAsleep();
+
+		//stat increases
 		game.increaseHunger();
 		game.isHungry();
 		game.increaseSleepiness();
@@ -92,7 +93,7 @@ const game = {
 	// increase hunger // keep in mind sleep state
 	increaseHunger(){
 		if (this.tamagotchi.isAsleep === false) {
-			if (this.time % 12 === 0) {
+			if (this.time % 2 === 0) {
 				this.tamagotchi.hunger++;
 			}
 		} else {
@@ -105,7 +106,7 @@ const game = {
 	// increase sleepiness 
 	increaseSleepiness(){
 		if (this.tamagotchi.isAsleep === false) {
-			if (this.time % 2 === 0) {
+			if (this.time % 15 === 0) {
 				this.tamagotchi.sleepiness++;
 			}
 		}
@@ -170,10 +171,27 @@ const game = {
 		}
 	},
 
-	// evolve
 	// feed
+
+	feedPet(){
+		if (game.tamagotchi.isAsleep === true) {
+			game.tamagotchi.hiss.play();
+		} else {
+			if (game.tamagotchi.hunger <= 3) {
+				game.tamagotchi.hunger = 1;
+				game.tamagotchi.eatSound.play();
+			} else {
+				game.tamagotchi.hunger -= 3;
+				game.tamagotchi.eatSound.play();
+			}
+		}
+	},
 	// play
+
+	
+	// evolve
 }
 
-$('#startButton').on('click',game.startGame);
-$('#lightButton').on('click',game.toggleLight);
+$('#startButton').on('click', game.startGame);
+$('#lightButton').on('click', game.toggleLight);
+$('#feedButton').on('click', game.feedPet);

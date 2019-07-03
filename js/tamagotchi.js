@@ -10,5 +10,7 @@ class Tamagotchi {
 		this.isAsleep = false;
 		this.angryMeow = new Audio('sounds/angrymeow.mp3')
 		this.meow = new Audio('sounds/meow.mp3')
+		this.eatSound = new Audio('sounds/eat.mp3')
+		this.hiss = new Audio('sounds/hiss.mp3')
 	}
 };
