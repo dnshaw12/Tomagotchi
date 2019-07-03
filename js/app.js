@@ -30,6 +30,8 @@ const game = {
 		game.increaseBoredom();
 		game.isBored();
 
+		game.evolve();
+
 		game.updateVisStats()
 
 		}, 1000);
@@ -206,6 +208,26 @@ const game = {
 	},
 
 	// evolve
+
+	evolve(){
+		if (this.time === 59) {
+			$('#catImage').attr('src','images/poof.gif')
+		}
+		if (this.time === 60) {
+			$('#catImage').attr('src','images/kitten-2.gif')
+			this.tamagotchi.surName = 'Cat '
+			$('#name').text(this.tamagotchi.surName+this.tamagotchi.name)
+		}
+		if (this.time === 119) {
+			$('#catImage').attr('src','images/poof.gif')
+		}
+		if (this.time === 120) {
+			console.log('second evolution');
+			$('#catImage').attr('src','images/kitten-3.gif')
+			this.tamagotchi.surName = 'Grande Matriarche '
+			$('#name').text(this.tamagotchi.surName+this.tamagotchi.name)
+		}
+	}
 }
 
 $('#startButton').on('click', game.startGame);
