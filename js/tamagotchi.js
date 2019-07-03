@@ -1,8 +1,8 @@
 /// tamagotchi class
 
 class Tamagotchi {
-	constructor(name){
-		this.name = name;
+	constructor(){
+		this.name = $('input')[0].value;
 		this.hunger = 1;
 		this.sleepiness = 1;
 		this.boredom = 1;

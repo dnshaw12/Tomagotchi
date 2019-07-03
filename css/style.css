@@ -7,8 +7,6 @@ body {
 	margin: 0;
 }
 
-
-
 header {
 	padding: 5px;
 }
@@ -25,8 +23,6 @@ main {
 	margin: 10px;
 }
 
-
-
 footer {
 	display: flex;
 	width: 100%;
@@ -41,6 +37,32 @@ header > div {
 	font-size: 30px;
 	text-align: right;
 	float: right;
+}
+
+#startScreen {
+	height: 90%;
+	width: 90%;
+	border-radius: 35px;
+	background-color: grey;
+	position: absolute;
+	/*opacity: 0.2;*/
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
+input {
+	height: 7%;
+	width: 45%;
+	margin: 0 auto;
+	font-size: 15px;
+}
+
+#startButton {
+	height: 10%;
+	width: 20%;
+	margin: 0 auto;
+	font-size: 15px;
 }
 
 #screen {

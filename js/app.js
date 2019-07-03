@@ -1,11 +1,12 @@
 $timer = $('#timer')
 
 const game = {
-	tamagotchi: {},
+	tamagotchi: null,
 	time: 0,
-	timer: null,
 	startGame(){
-		this.timer = setInterval(function(){
+		game.tamagotchi = new Tamagotchi();
+		$('#startScreen').remove()
+		timer = setInterval(function(){
 			game.increaseTimer()
 		}, 1000);
 	},
@@ -14,3 +15,5 @@ const game = {
 		$timer.text(this.time);
 	},
 }
+
+$('#startButton').on('click',game.startGame);
