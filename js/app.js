@@ -65,11 +65,19 @@ const game = {
 				game.lightOn = false;
 				$('#screen').css('background-color',"black")
 				$('#screen').css('background-image',"")
+				$('#catImage').attr('src','images/black.png')
 			} else {
 				console.log('turn light on');
 				game.lightOn = true;
 				$('#screen').css('background-image',"url('images/field.jpg')")
 				$('#screen').css('background-color',"")
+				if (game.time < 60) {
+					$('#catImage').attr('src','images/kitten1.gif')
+				} else if (game.time >= 60 && game.time < 120) {
+					$('#catImage').attr('src','images/kitten-2.gif')
+				} else if (game.time >= 120) {
+					$('#catImage').attr('src','images/kitten-3.gif')
+				}
 			}
 		}
 	},
@@ -210,22 +218,25 @@ const game = {
 	// evolve
 
 	evolve(){
-		if (this.time === 59) {
-			$('#catImage').attr('src','images/poof.gif')
-		}
-		if (this.time === 60) {
-			$('#catImage').attr('src','images/kitten-2.gif')
-			this.tamagotchi.surName = 'Cat '
-			$('#name').text(this.tamagotchi.surName+this.tamagotchi.name)
-		}
-		if (this.time === 119) {
-			$('#catImage').attr('src','images/poof.gif')
-		}
-		if (this.time === 120) {
-			console.log('second evolution');
-			$('#catImage').attr('src','images/kitten-3.gif')
-			this.tamagotchi.surName = 'Grande Matriarche '
-			$('#name').text(this.tamagotchi.surName+this.tamagotchi.name)
+		if (this.tamagotchi.isAsleep === false) {
+			if (this.time === 9) {
+				$('#catImage').attr('src','images/poof.gif')
+			}
+			if (this.time === 10) {
+				$('#catImage').attr('src','images/kitten-2.gif')
+				this.tamagotchi.surName = 'Cat '
+				$('#name').text(this.tamagotchi.surName+this.tamagotchi.name)
+			}
+			if (this.time === 19) {
+				$('#catImage').attr('src','images/poof.gif')
+			}
+			if (this.time === 20) {
+				console.log('second evolution');
+				$('#catImage').attr('src','images/kitten-3.gif')
+				this.tamagotchi.surName = 'Grande Matriarche '
+				$('#name').text(this.tamagotchi.surName+this.tamagotchi.name)
+				$('#bottomScreen').css('justify-content', 'space-evenly')
+			}
 		}
 	}
 }
