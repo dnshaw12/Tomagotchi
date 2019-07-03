@@ -20,13 +20,13 @@ const game = {
 		//stat increases
 
 		// game.dies();
+		game.beAsleep();
 		game.increaseHunger();
 		game.isHungry();
 		game.increaseSleepiness();
 		game.isSleepy();
 		game.increaseBoredom();
-
-		game.beAsleep();
+		game.isBored();
 
 		game.updateVisStats()
 
@@ -61,13 +61,11 @@ const game = {
 				game.lightOn = false;
 				$('#screen').css('background-color',"black")
 				$('#screen').css('background-image',"")
-				$('#screen2').css('background-image',"url('images/sleeping-zzz.gif')")
 			} else {
 				console.log('turn light on');
 				game.lightOn = true;
 				$('#screen').css('background-image',"url('images/field.jpg')")
 				$('#screen').css('background-color',"")
-				$('#screen2').css('background-image',"")
 			}
 		}
 	},
@@ -78,6 +76,7 @@ const game = {
 		if (this.lightOn === false) {
 			//decrease sleepiness
 			this.tamagotchi.isAsleep = true;
+			$('#screen2').css('background-image',"url('images/sleeping-zzz.gif')")
 			if (this.tamagotchi.sleepiness > 1) {
 				if (this.time % 5 === 0) {
 					this.tamagotchi.sleepiness--;
@@ -85,8 +84,8 @@ const game = {
 			}
 			$('#sleepiness').text(game.tamagotchi.sleepiness)
 		} else {
-			this.sleepTime = 0;
 			this.tamagotchi.isAsleep = false;
+			$('#screen2').css('background-image',"")
 		}
 	},
 
@@ -116,7 +115,7 @@ const game = {
 
 	increaseBoredom(){
 		if (this.tamagotchi.isAsleep === false) {
-			if (this.time % 25 === 0) {
+			if (this.time % 19 === 0) {
 				this.tamagotchi.boredom++;
 			}
 		} else {
@@ -147,16 +146,30 @@ const game = {
 		if (this.tamagotchi.sleepiness > 6 && this.tamagotchi.isAsleep === false) {
 			if (this.time % 2 === 0) {
 				this.tamagotchi.angryMeow.play();
-				$('#screen2').css('background-image',"")
-			} else {
 				$('#screen2').css('background-image',"url('images/sleeping-zzz.gif')")
+			} else {
+				$('#screen2').css('background-image',"")
 			};
-		} else {
+		} else if (this.tamagotchi.sleepiness < 6 && this.tamagotchi.isAsleep === false) {
 			$('#screen2').css('background-image',"")
 		}
-	}
+	},
 
 	// is bored
+
+	isBored(){
+		if (this.tamagotchi.boredom > 6 && this.tamagotchi.isAsleep === true) {
+				$('#screen3').css('background-image',"url('images/bored-thought.gif')")
+		} else if (this.tamagotchi.boredom > 6 && this.tamagotchi.isAsleep === false) {
+			$('#screen3').css('background-image',"url('images/bored-thought.gif')")
+			if (this.time % 2 === 0) {
+				this.tamagotchi.angryMeow.play();
+			}
+		}  else {
+			$('#screen3').css('background-image',"")
+		}
+	},
+
 	// evolve
 	// feed
 	// play
