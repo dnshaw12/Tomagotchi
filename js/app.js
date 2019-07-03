@@ -6,17 +6,21 @@ const game = {
 	time: 0,
 	timer: null,
 	lightOn: true,
+	sleepTimer: null,
+	sleepTime: 0,
 	startGame(){
 		game.gameStarted = true;
 		game.tamagotchi = new Tamagotchi();
 		$('#name').text(game.tamagotchi.surName+game.tamagotchi.name)
 		$('#screen').css('background-image',"url('images/field.jpg')")
 		$('#startScreen').remove()
+
 		game.timer = setInterval(function(){
 		game.increaseTimer();
 		//stat increases
 
 		game.dies();
+		game.increaseHunger();
 
 		game.beAsleep();
 
@@ -64,26 +68,63 @@ const game = {
 		}
 	},
 
+	// sleep state // cannot feed or play
+
 	beAsleep(){
 		if (this.lightOn === false) {
 			//decrease sleepiness
 			this.tamagotchi.isAsleep = true;
 			if (this.tamagotchi.sleepiness > 1) {
-				this.tamagotchi.sleepiness--;
+				if (this.time % 5 === 0) {
+					this.tamagotchi.sleepiness--;
+				};
 			}
 			$('#sleepiness').text(game.tamagotchi.sleepiness)
+		} else {
+			this.sleepTime = 0;
+			this.tamagotchi.isAsleep = false;
+			this.tamagotchi.sleepiness++;
+		}
+	},
+
+	// increase hunger // keep in mind sleep state
+	increaseHunger(){
+		if (this.tamagotchi.isAsleep === false) {
+			if (this.time % 12 === 0) {
+				this.tamagotchi.hunger++;
+			}
+		} else {
+			if (this.time % 24 === 0) {
+				this.tamagotchi.hunger++;
+			}
+		}
+	},
+
+	// increase sleepiness 
+	increaseSleepiness(){
+		if (this.tamagotchi.isAsleep === false) {
+			if (this.time % 15) {
+				this.tamagotchi.sleepiness++;
+			}
 		}
 	}
 
-	// sleep state // cannot feed or play
-
-
-
-	// increase hunger // keep in mind sleep state
-	// increase sleepiness 
 	// increase boredom // keep in mind sleep state
+
+	increaseBored(){
+		if (this.tamagotchi.isAsleep === false) {
+			if (this.time % 25) {
+				this.tamagotchi.boredom++;
+			}
+		}
+	}
+
+	// is hungry
+	// is sleepy
+	// is bored
 	// evolve
 	// feed
+	// play
 }
 
 $('#startButton').on('click',game.startGame);

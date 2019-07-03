@@ -10,6 +10,6 @@ class Tamagotchi {
 		this.hungry = false;
 		this.sleepy = false;
 		this.bored = false;
-		this.inAsleep = false;
+		this.isAsleep = false;
 	}
 };
