@@ -116,7 +116,7 @@ const game = {
 	// increase hunger // keep in mind sleep state
 	increaseHunger(){
 		if (this.tamagotchi.isAsleep === false) {
-			if (this.time % 1 === 0) {
+			if (this.time % 12 === 0) {
 				this.tamagotchi.hunger++;
 			}
 		} else {
