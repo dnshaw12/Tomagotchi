@@ -21,6 +21,8 @@ const game = {
 
 		game.dies();
 		game.increaseHunger();
+		game.increaseSleepiness();
+		game.increaseBoredom();
 
 		game.beAsleep();
 
@@ -83,7 +85,6 @@ const game = {
 		} else {
 			this.sleepTime = 0;
 			this.tamagotchi.isAsleep = false;
-			this.tamagotchi.sleepiness++;
 		}
 	},
 
@@ -103,21 +104,26 @@ const game = {
 	// increase sleepiness 
 	increaseSleepiness(){
 		if (this.tamagotchi.isAsleep === false) {
-			if (this.time % 15) {
+			if (this.time % 15 === 0) {
 				this.tamagotchi.sleepiness++;
 			}
 		}
-	}
+	},
 
 	// increase boredom // keep in mind sleep state
 
-	increaseBored(){
+	increaseBoredom(){
 		if (this.tamagotchi.isAsleep === false) {
-			if (this.time % 25) {
+			if (this.time % 25 === 0) {
+				this.tamagotchi.boredom++;
+			}
+		} else {
+			if (this.time % 10 === 0) {
 				this.tamagotchi.boredom++;
 			}
 		}
-	}
+	},
+
 
 	// is hungry
 	// is sleepy
