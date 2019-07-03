@@ -17,9 +17,8 @@ const game = {
 		$('#startScreen').remove()
 
 		game.timer = setInterval(function(){
-		game.increaseTimer();
 
-		game.dies();
+		game.increaseTimer();
 		game.beAsleep();
 
 		//stat increases
@@ -33,6 +32,8 @@ const game = {
 		game.evolve();
 
 		game.updateVisStats()
+
+		game.dies();
 
 		}, 1000);
 	},
@@ -54,6 +55,13 @@ const game = {
 	dies(){
 		if (this.tamagotchi.hunger === 10 || this.tamagotchi.sleepiness === 10 || this.tamagotchi.boredom === 10) {
 			console.log(this.tamagotchi.surName + this.tamagotchi.name + ' died!');
+			$('#screen').css('background-color',"black");
+			$('#screen').css('background-image','');
+			$('#screen1').css('background-image','');
+			$('#screen2').css('background-image','');
+			$('#screen3').css('background-image','');
+			$('#catImage').attr('src','images/headstone.png')
+			$('#screen2').text(`${this.tamagotchi.surName}${this.tamagotchi.name} died! You're a terrible owner....`)
 			clearInterval(this.timer)
 		}
 	},
@@ -104,7 +112,7 @@ const game = {
 	// increase hunger // keep in mind sleep state
 	increaseHunger(){
 		if (this.tamagotchi.isAsleep === false) {
-			if (this.time % 12 === 0) {
+			if (this.time % 1 === 0) {
 				this.tamagotchi.hunger++;
 			}
 		} else {
@@ -185,34 +193,38 @@ const game = {
 	// feed
 
 	feedPet(){
-		if (game.tamagotchi.isAsleep === true) {
-			game.tamagotchi.hiss.play();
-		} else {
-			if (game.tamagotchi.hunger <= 3) {
-				game.tamagotchi.hunger = 1;
-				game.tamagotchi.eatSound.play();
+		if (game.gameStarted) {
+			if (game.tamagotchi.isAsleep === true) {
+				game.tamagotchi.hiss.play();
 			} else {
-				game.tamagotchi.hunger -= 3;
-				game.tamagotchi.eatSound.play();
+				if (game.tamagotchi.hunger <= 3) {
+					game.tamagotchi.hunger = 1;
+					game.tamagotchi.eatSound.play();
+				} else {
+					game.tamagotchi.hunger -= 3;
+					game.tamagotchi.eatSound.play();
+				}
 			}
+			game.updateVisStats()
 		}
-		game.updateVisStats()
 	},
 	// play
 
 	play(){
-		if (game.tamagotchi.isAsleep === true) {
-			game.tamagotchi.hiss.play();
-		} else {
-			if (game.tamagotchi.boredom <= 5) {
-				game.tamagotchi.boredom = 1;
-				game.tamagotchi.meow.play();
+		if (game.gameStarted) {
+			if (game.tamagotchi.isAsleep === true) {
+				game.tamagotchi.hiss.play();
 			} else {
-				game.tamagotchi.boredom -= 5;
-				game.tamagotchi.meow.play();
+				if (game.tamagotchi.boredom <= 5) {
+					game.tamagotchi.boredom = 1;
+					game.tamagotchi.meow.play();
+				} else {
+					game.tamagotchi.boredom -= 5;
+					game.tamagotchi.meow.play();
+				}
 			}
+			game.updateVisStats()
 		}
-		game.updateVisStats()
 	},
 
 	// evolve

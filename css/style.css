@@ -5,6 +5,7 @@ body {
 	/*align-items: flex-start;*/
 	height: 100vh;
 	margin: 0;
+	font-family: 'Varela Round', sans-serif;
 }
 
 header {
@@ -17,10 +18,11 @@ main {
 	justify-content: space-around;
 	align-items: center;
 	flex-grow: 1;
-	background-color: rgb(192,192,220);
+	background-color: rgb(170,150,250);
 	position: relative;
 	border-radius: 35px;
 	margin: 10px;
+	border: 2px black solid;
 }
 
 footer {
@@ -49,6 +51,7 @@ header > div {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
+	border: 1px black solid;
 }
 
 input {
@@ -56,6 +59,8 @@ input {
 	width: 45%;
 	margin: 0 auto;
 	font-size: 15px;
+	border: 1px solid purple;
+	color: purple;
 }
 
 #startButton {
@@ -63,6 +68,9 @@ input {
 	width: 20%;
 	margin: 0 auto;
 	font-size: 15px;
+	border: 1px solid purple;
+	color: purple;
+	font-family: 'Varela Round', sans-serif;
 }
 
 #screen {
@@ -74,6 +82,7 @@ input {
 	border-radius: 35px;
 	background-color: white;
 	background-size:100% 100%;
+	border: 1px black solid;
 }
 
 #bottomScreen {
@@ -88,6 +97,9 @@ input {
 	width: 33.333333%;
 	height: 50%;
 	background-size:100% 100%;
+	color: pink;
+	font-size: 25px; 
+	text-align: center
 }
 
 #screen1 {
@@ -117,6 +129,9 @@ input {
 	width: 120px;
 	font-size: 13px;
 	border-radius: 15px;
+	border: 1px solid purple;
+	color: purple;
+	font-family: 'Varela Round', sans-serif;
 }
 
 #stats {
@@ -140,7 +155,7 @@ img {
 @keyframes run {
 	0%   {margin-left:10%;}
   	25%  {margin-left:40%;}
-  	50%  {margin-left:70%;}
+  	50%  {margin-left:65%;}
   	75%  {margin-left:40%;}
   	100% {margin-left:10%;}
 }
