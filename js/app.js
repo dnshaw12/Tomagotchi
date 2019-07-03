@@ -19,8 +19,9 @@ const game = {
 		game.increaseTimer();
 		//stat increases
 
-		game.dies();
+		// game.dies();
 		game.increaseHunger();
+		game.isHungry();
 		game.increaseSleepiness();
 		game.increaseBoredom();
 
@@ -91,7 +92,7 @@ const game = {
 	// increase hunger // keep in mind sleep state
 	increaseHunger(){
 		if (this.tamagotchi.isAsleep === false) {
-			if (this.time % 12 === 0) {
+			if (this.time % 2 === 0) {
 				this.tamagotchi.hunger++;
 			}
 		} else {
@@ -124,8 +125,21 @@ const game = {
 		}
 	},
 
-
 	// is hungry
+
+	isHungry(){
+		if (this.tamagotchi.hunger > 6 && this.tamagotchi.isAsleep === true) {
+			$('#screen1').css('background-image',"url('images/hungry-thought.gif')")
+		} else if (this.tamagotchi.hunger > 6 && this.tamagotchi.isAsleep === false) {
+			$('#screen1').css('background-image',"url('images/hungry-thought.gif')")
+			if (this.time % 2 === 0) {
+				this.tamagotchi.angryMeow.play();
+			};
+		} else {
+			$('#screen1').css('background-image',"")
+		}
+	}
+
 	// is sleepy
 	// is bored
 	// evolve
