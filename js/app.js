@@ -5,6 +5,8 @@ const game = {
 	time: 0,
 	startGame(){
 		game.tamagotchi = new Tamagotchi();
+		$('#name').text(game.tamagotchi.name)
+		$('#screen').css('background-image',"url('images/field.jpg')")
 		$('#startScreen').remove()
 		timer = setInterval(function(){
 			game.increaseTimer()
