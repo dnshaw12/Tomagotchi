@@ -13,6 +13,7 @@ const game = {
 		game.tamagotchi = new Tamagotchi();
 		$('#name').text(game.tamagotchi.surName+game.tamagotchi.name)
 		$('#screen').css('background-image',"url('images/field.jpg')")
+		// $('#bottomScreen').css('background-image',"url('images/kitten1.gif')")
 		$('#startScreen').remove()
 
 		game.timer = setInterval(function(){
@@ -93,7 +94,7 @@ const game = {
 	// increase hunger // keep in mind sleep state
 	increaseHunger(){
 		if (this.tamagotchi.isAsleep === false) {
-			if (this.time % 2 === 0) {
+			if (this.time % 12 === 0) {
 				this.tamagotchi.hunger++;
 			}
 		} else {
@@ -116,7 +117,7 @@ const game = {
 
 	increaseBoredom(){
 		if (this.tamagotchi.isAsleep === false) {
-			if (this.time % 19 === 0) {
+			if (this.time % 18 === 0) {
 				this.tamagotchi.boredom++;
 			}
 		} else {
@@ -185,13 +186,29 @@ const game = {
 				game.tamagotchi.eatSound.play();
 			}
 		}
+		game.updateVisStats()
 	},
 	// play
 
-	
+	play(){
+		if (game.tamagotchi.isAsleep === true) {
+			game.tamagotchi.hiss.play();
+		} else {
+			if (game.tamagotchi.boredom <= 5) {
+				game.tamagotchi.boredom = 1;
+				game.tamagotchi.meow.play();
+			} else {
+				game.tamagotchi.boredom -= 5;
+				game.tamagotchi.meow.play();
+			}
+		}
+		game.updateVisStats()
+	},
+
 	// evolve
 }
 
 $('#startButton').on('click', game.startGame);
 $('#lightButton').on('click', game.toggleLight);
 $('#feedButton').on('click', game.feedPet);
+$('#playButton').on('click', game.play);
