@@ -15,9 +15,12 @@ const game = {
 		game.timer = setInterval(function(){
 		game.increaseTimer();
 		//stat increases
-		$('#hunger').text(game.tamagotchi.hunger)
 
 		game.dies();
+
+		game.beAsleep();
+
+		game.updateVisStats()
 
 		}, 1000);
 	},
@@ -25,6 +28,15 @@ const game = {
 		this.time++;
 		$timer.text(this.time);
 	},
+	// update visual stats
+	updateVisStats(){
+		if (this.tamagotchi.hunger <= 10 || this.tamagotchi.sleepiness <= 10 || this.tamagotchi.boredom <= 10) {
+			$('#sleepiness').text(game.tamagotchi.sleepiness)
+			$('#hunger').text(game.tamagotchi.hunger)
+			$('#boredom').text(game.tamagotchi.boredom)
+		}
+	},
+
 	// check if dead
 
 	dies(){
@@ -49,6 +61,17 @@ const game = {
 				$('#screen').css('background-color',"")
 				$('#screen2').css('background-image',"")
 			}
+		}
+	},
+
+	beAsleep(){
+		if (this.lightOn === false) {
+			//decrease sleepiness
+			this.tamagotchi.isAsleep = true;
+			if (this.tamagotchi.sleepiness > 1) {
+				this.tamagotchi.sleepiness--;
+			}
+			$('#sleepiness').text(game.tamagotchi.sleepiness)
 		}
 	}
 
