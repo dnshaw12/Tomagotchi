@@ -9,12 +9,13 @@ const game = {
 	sleepTimer: null,
 	sleepTime: 0,
 	startGame(){
+
 		game.gameStarted = true;
 		game.tamagotchi = new Tamagotchi();
 		$('#name').text(game.tamagotchi.surName+game.tamagotchi.name)
 		$('#screen').css('background-image',"url('images/field.jpg')")
-		// $('#bottomScreen').css('background-image',"url('images/kitten1.gif')")
-		$('#startScreen').remove()
+		$('#startScreen').remove();
+		$('#screen').css('animation','2s zoom');
 
 		game.timer = setInterval(function(){
 
