@@ -32,7 +32,7 @@ const game = {
 			game.increaseSleepiness();
 			game.isSleepy();
 			game.increaseBoredom();
-			game.isBored(``);
+			game.isBored();
 
 			game.evolve();
 

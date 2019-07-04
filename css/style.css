@@ -156,9 +156,9 @@ img {
 
 @keyframes run {
 	0%   {margin-left:10%;}
-  	25%  {margin-left:40%;}
+  	/*25%  {margin-left:40%;}*/
   	50%  {margin-left:65%;}
-  	75%  {margin-left:40%;}
+  	/*75%  {margin-left:40%;}*/
   	100% {margin-left:10%;}
 }
 
